@@ -3,6 +3,8 @@ const fs = require('fs');
 const util = require('util');
 const generateMarkdown = require('./utils/generateMarkdown.js')
 
+const writeFileAsync = util.promisify(fs.writeFile);
+
 const prompt = inquirer.createPromptModule();
 
 // questions for user
@@ -61,26 +63,27 @@ const questions = [
       type: "list",
       name: 'license',
       message: 'What kind of license will you use?',
-      choices: ['MIT', 'GNU v3.0', 'Apache v2.0']
+      choices: ['MIT', 'GNU v3.0', 'Apache v2.0', 'None']
     },
   ];
 
 
 // => initialize program
-async function init() {
-
- (await prompt(questions))
-  const data = this.async();
+function init () {
+  prompt(questions)
+ .then(function (data) {
   generateMarkdown(data)
-  const fileName = `${newTitle}.md`
-  return fs.writeToFile(fileName, generateMarkdown)
+ })
+ .then(function(generateMarkdown){
+   const filename = `/output/README.md`
+   writeFileAsync(filename, generateMarkdown)
+ })
 }
 
 // => call to initialize program
 init();
 
 // => write README file
-// writeToFile(fileName, generateMarkdown, function (err) {
-//   if (err) return console.log(err);
-//   console.log('done');
-// });
+// function writeToFile(filename, generateMarkdown) {
+//   fs.writeFile(`/output/README.md`, generateMarkdown)
+// }
