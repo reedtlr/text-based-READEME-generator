@@ -71,7 +71,7 @@ const questions = [
 // => initialize program
 function init () {
   prompt(questions)
- .then(function (data) {
+ .then(function ({data}) {
   generateMarkdown(data)
  })
  .then(function(generateMarkdown){

@@ -18,7 +18,7 @@ function generateMarkdown(data) {
     }
   }
 
-  licenseCheck(data.license)
+  licenseCheck(this.license)
 
   return `# ${data.title}
   ${newLicense}
