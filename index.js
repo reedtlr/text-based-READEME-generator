@@ -1,7 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
-const generateMarkdown = require('./utils/generateMarkdown')
+const generateMarkdown = require('./utils/generateMarkdown.js')
 
 const prompt = inquirer.createPromptModule();
 
@@ -69,8 +69,9 @@ const questions = [
 // => initialize program
 async function init() {
 
-  await prompt(questions)
-  .then(generateMarkdown(data))
+ (await prompt(questions))
+  const data = this.async();
+  generateMarkdown(data)
   const fileName = `${newTitle}.md`
   return fs.writeToFile(fileName, generateMarkdown)
 }
@@ -79,7 +80,7 @@ async function init() {
 init();
 
 // => write README file
-fs.writeToFile(fileName, generateMarkdown, function (err) {
-  if (err) return console.log(err);
-  console.log('done');
-});
+// writeToFile(fileName, generateMarkdown, function (err) {
+//   if (err) return console.log(err);
+//   console.log('done');
+// });
