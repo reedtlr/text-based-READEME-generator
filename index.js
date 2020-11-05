@@ -72,17 +72,12 @@ const questions = [
 function init () {
   prompt(questions)
  .then(function ({data}) {
-  generateMarkdown(data)
+  generateMarkdown({data})
  })
  .then(function(generateMarkdown){
    const filename = `/output/README.md`
-   writeFileAsync(filename, generateMarkdown, repoNamesStr, function(err) {
-    if (err) {
-      throw err;
-    }
-
-    console.log(`Saved ${repoNames.length} repos`);
-  })})}
+   writeFileAsync(filename, generateMarkdown)
+ })}
 
 
 // => call to initialize program
