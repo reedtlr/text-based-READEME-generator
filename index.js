@@ -67,9 +67,9 @@ const questions = [
 
 
 // => initialize program
-function init() {
+async function init() {
 
-  prompt(questions)
+  await prompt(questions)
   .then(generateMarkdown(data))
   const fileName = `${newTitle}.md`
   return fs.writeToFile(fileName, generateMarkdown)
