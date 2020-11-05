@@ -72,10 +72,10 @@ const questions = [
 function init () {
   prompt(questions)
  .then(function ({data}) {
-  generateMarkdown({data})
+  return generateMarkdown({data})
  })
  .then(function(generateMarkdown){
-   const filename = `/output/README.md`
+  const filename = __dirname + `/output/README.md`;
    writeFileAsync(filename, generateMarkdown)
  })}
 

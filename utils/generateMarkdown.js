@@ -21,7 +21,7 @@ function generateMarkdown(data) {
   licenseCheck(this.license)
 
   return `# ${data.title}
-  ${newLicense}
+${newLicense}
 (https://${data.github}.github.io/${data.title})
 ## Table of contents
 * [General info](#general-info)
