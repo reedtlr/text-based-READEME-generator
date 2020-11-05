@@ -1,7 +1,9 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
-const Choices = require('inquirer/lib/objects/choices');
+const generateMarkdown = require('./utils/generateMarkdown')
+
+const prompt = inquirer.createPromptModule();
 
 // questions for user
 const questions = [
@@ -27,8 +29,13 @@ const questions = [
     },
     {
       type: "input",
-      name: 'installation',
+      name: 'install',
       message: 'Enter instructions on how to install your project.'
+    },
+    {
+      type: "input",
+      name: 'tech',
+      message: 'What technologies were used in creating your project?'
     },
     {
       type: "input",
@@ -53,21 +60,26 @@ const questions = [
     {
       type: "list",
       name: 'license',
-      message: 'What kind of license do you want to use?',
+      message: 'What kind of license will you use?',
       choices: ['MIT', 'GNU v3.0', 'Apache v2.0']
     },
   ];
 
-// => write README file
-function writeToFile(fileName, data) {
-}
 
 // => initialize program
 function init() {
 
-    inquirer
-    .prompt(questions)
+  prompt(questions)
+  .then(generateMarkdown(data))
+  const fileName = `${newTitle}.md`
+  return fs.writeToFile(fileName, generateMarkdown)
 }
 
 // => call to initialize program
 init();
+
+// => write README file
+fs.writeToFile(fileName, generateMarkdown, function (err) {
+  if (err) return console.log(err);
+  console.log('done');
+});
