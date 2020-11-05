@@ -76,9 +76,14 @@ function init () {
  })
  .then(function(generateMarkdown){
    const filename = `/output/README.md`
-   writeFileAsync(filename, generateMarkdown)
- })
-}
+   writeFileAsync(filename, generateMarkdown, repoNamesStr, function(err) {
+    if (err) {
+      throw err;
+    }
+
+    console.log(`Saved ${repoNames.length} repos`);
+  })})}
+
 
 // => call to initialize program
 init();
