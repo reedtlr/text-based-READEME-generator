@@ -6,7 +6,7 @@ const util = require('util');
 // => generate markdown for README
 function generateMarkdown(data) {
   let newLicense = ''
-  let licenseCheck = () => {
+  let licenseCheck = (data) => {
     if (data.license === 'MIT') {
       newLicense = `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
     } else if (data.license === 'GNU v3.0') {
@@ -18,8 +18,7 @@ function generateMarkdown(data) {
     }
   }
 
-  licenseCheck(data.license)
-console.log(data)
+  licenseCheck(data)
 
   return `# ${data.title}
 ${newLicense}

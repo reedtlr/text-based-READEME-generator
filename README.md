@@ -12,3 +12,5 @@ This is a README.md file generator written in Javascript ES6 and Node.js.
 Project is created with:
 * Javascript ES6
 * Node.js
+
+![Farmers Market Finder Demo](./demo/demo.gif)
