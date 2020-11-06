@@ -1,6 +1,6 @@
 # text-based-READEME-generator
-README file generator in Node.js
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+README file generator in Node.js
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
