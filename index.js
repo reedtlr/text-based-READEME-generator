@@ -71,8 +71,8 @@ const questions = [
 // => initialize program
 function init () {
   prompt(questions)
- .then(function ({data}) {
-  return generateMarkdown({data})
+ .then(function (data) {
+  return generateMarkdown(data)
  })
  .then(function(generateMarkdown){
   const filename = __dirname + `/output/README.md`;
